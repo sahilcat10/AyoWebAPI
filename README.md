@@ -30,20 +30,20 @@ Clone down this repository. You will need visual studio installed on your machin
 
 Note: User can successfully convert the only unit which are defined below. For others usings, It will show a message $"Conversion rate is not defined for the unit {fromUnit} to {toUnit}.";
 
-   Metric units             Imperial units
-1. kilometer                mile
-2. kilometer                foot
-3. meter                    foot
-4. meter                    inch
-5. centimeter               inch
-6. millimeter               inch
-7. liter                    quart
-8. liter                    gallon
-9. milliliter               cup
-10. milliliter              ounce
-11. celsius                 fahrenheit
-12. kilogram                ton
-13. kilogram                pound
-14. gram                    ounce
-15. gram	                   pound
-16. milligram               ounce
+   Metric units <=> Imperial units
+1. kilometer <=> mile
+2. kilometer <=> foot
+3. meter <=> foot
+4. meter <=> inch
+5. centimeter <=> inch
+6. millimeter <=> inch
+7. liter <=> quart
+8. liter <=> gallon
+9. milliliter <=> cup
+10. milliliter <=> ounce
+11. celsius <=> fahrenheit
+12. kilogram <=> ton
+13. kilogram <=> pound
+14. gram <=> ounce
+15. gram <=> pound
+16. milligram <=> ounce
