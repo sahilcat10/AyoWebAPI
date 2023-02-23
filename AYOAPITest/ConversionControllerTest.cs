@@ -4,27 +4,26 @@ using AYOAPI.Model;
 using Azure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace AYOAPITest
 {
     public class ConversionControllerTest
     {
-        public static DbContextOptions<ApplicationDbContext> dbContextOptions { get; }
-        public static string connectionString = "Server=MSI;Database=AYODb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=False;";
+        public IConfigurationRoot Configuration { get; set; }
 
         ConversionController _controller;
         IUnitConversionService _unitConversionService;
 
-        static ConversionControllerTest()
-        {
-            dbContextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseSqlServer(connectionString)
-                .Options;
-        }
-
         public ConversionControllerTest()
         {
-            var dbContext = new ApplicationDbContext(dbContextOptions);
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            Configuration = builder.Build();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("AYOConnection"));
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+
             _unitConversionService = new UnitConversionService(dbContext);
             _controller = new ConversionController(_unitConversionService);
         }
